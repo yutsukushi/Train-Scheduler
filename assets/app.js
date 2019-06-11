@@ -52,29 +52,29 @@ $("#submit").on("click", function(){ //submit button on click function
 // Firebase watcher + initial loader HINT: .on("value")
 
 database.ref().on("child_added", function(snapshot) { // "child_added" is a firebase event that is typically used to retrieve a list of items from the database.
-
+  var snapVal = snapshot.val();
   // Log everything that's coming out of snapshot
-  console.log(snapshot.val());
-  console.log(snapshot.val().trainName);
-  console.log(snapshot.val().dest);
-  console.log(snapshot.val().trainTime);
-  console.log(snapshot.val().freq);
-  console.log(snapshot.val().dateAdded);
+  console.log(snapVal);
+  console.log(snapVal.trainName);
+  console.log(snapVal.dest);
+  console.log(snapVal.trainTime);
+  console.log(snapVal.freq);
+  console.log(snapVal.dateAdded);
 
   //prepends the values on the chart
-  $(".trainNameDisplay").prepend(snapshot.val().trainName + '<hr>');
-  $(".destDisplay").prepend(snapshot.val().dest + '<hr>');
-  $(".trainTimeDisplay").prepend(snapshot.val().trainTime + '<hr>');
-  $(".freqDisplay").prepend(snapshot.val().freq + '<hr>');
+  $(".trainNameDisplay").prepend(snapVal.trainName + '<hr>');
+  $(".destDisplay").prepend(snapVal.dest + '<hr>');
+  $(".trainTimeDisplay").prepend(snapVal.trainTime + '<hr>');
+  $(".freqDisplay").prepend(snapVal.freq + '<hr>');
 
   //calculating the minutes away of the next train
-  var firstTimeConverted = moment((snapshot.val().trainTime), "HH:mm").subtract(1, "years");
+  var firstTimeConverted = moment((snapVal.trainTime), "HH:mm").subtract(1, "years");
 
   var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 
   var tRemainder = diffTime % (snapshot.val().freq);
 
-  var minAway = (snapshot.val().freq) - tRemainder;
+  var minAway = (snapVal.freq) - tRemainder;
 
   //prepends the minutes away on the chart
   $(".minutesDisplay").prepend(minAway + '<hr>');

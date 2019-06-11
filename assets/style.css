@@ -1,5 +1,10 @@
 .jumbotron {
-    background-color: #000000;
+    /* credit to igorovsyannykov-6222956 from pixabay */
+    background-image: url('images/subway-2893846_1920.jpg');
+}
+
+.jumbotron-fluid {
+    padding: 5%;
 }
 
 .display-4 {
