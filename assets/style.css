@@ -7,12 +7,22 @@
     padding: 5%;
 }
 
-.display-4 {
+.header {
     color: white;
+    font-size: 60px;
 }
 
-.lead {
+.card-header {
+    color: #5e5e5e;
+}
+
+.animated {
     color: white;
+    font-size: 20px;
+}
+
+label {
+    margin-bottom: 5px;
 }
 
 body {
