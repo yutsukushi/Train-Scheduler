@@ -1,4 +1,4 @@
-# TrainScheduler
+# Train-Scheduler
 
 The first stop to your next destination!
 
